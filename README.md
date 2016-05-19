@@ -1,2 +1,2 @@
-# collection
-A simple collection/array management class.
+# Collection
+An all encompassing array manager.
