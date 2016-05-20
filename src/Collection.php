@@ -190,7 +190,7 @@ class Collection
     }
 
     /**
-     * et the value of the last element in this collection.
+     * Get the value of the last element in this collection.
      *
      * @return mixed
      *
@@ -198,7 +198,17 @@ class Collection
      */
     public function last()
     {
-        //
+        if (true === $this->isEmpty()) {
+            throw new CollectionException(
+                'Cannot get last element as collection is empty.'
+            );
+        }
+
+        end($this->items);
+        $key = key($this->items);
+        reset($this->items);
+
+        return $this->items[$key];
     }
 
     /**
@@ -346,7 +356,7 @@ class Collection
      * @param array  $collection
      * @param string $pluck_key
      * @param bool   $deep       Whether to traverse into sub-arrays.
-     * 
+     *
      * @return \Enzyme\Collection\Collection
      */
     protected static function pluckKey(array $collection, $pluck_key, $deep)

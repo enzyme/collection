@@ -25,6 +25,18 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $collection->isEmpty());
     }
 
+    public function test_collection_gets_last_values_as_expected()
+    {
+        $original_array = [
+            'foo' => 'bar',
+            'bar' => 'baz'
+        ];
+
+        $collection = new Collection($original_array);
+
+        $this->assertEquals($original_array['bar'], $collection->last());
+    }
+
     public function test_collection_gets_default_values_as_expected()
     {
         $collection = new Collection;
@@ -33,6 +45,8 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(null, $collection->getOrDefault('foo'));
         $this->assertEquals('bar', $collection->firstOrDefault('bar'));
         $this->assertEquals(null, $collection->firstOrDefault());
+        $this->assertEquals('bar', $collection->lastOrDefault('bar'));
+        $this->assertEquals(null, $collection->lastOrDefault());
     }
 
     public function test_collection_method_each_works_as_expected()
@@ -159,5 +173,14 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $collection = new Collection;
         $collection->first();
+    }
+
+    /**
+     * @expectedException \Enzyme\Collection\CollectionException
+     */
+    public function test_collection_throws_exception_for_non_existent_element_3()
+    {
+        $collection = new Collection;
+        $collection->last();
     }
 }
