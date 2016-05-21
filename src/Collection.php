@@ -3,26 +3,11 @@
 namespace Enzyme\Collection;
 
 use Closure;
+use Iterator;
+use ArrayAccess;
 
-class Collection
+class Collection extends BaseCollection
 {
-    /**
-     * The list of internal items stored by this collection.
-     *
-     * @var array
-     */
-    protected $items;
-
-    /**
-     * Instantiate a new collection with the optional provided array.
-     *
-     * @param array $items
-     */
-    public function __construct(array $items = [])
-    {
-        $this->items = $items;
-    }
-
     /**
      * Get a PHP style array from the current collection.
      *
