@@ -34,6 +34,12 @@ class BaseCollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(count($expected), count($collection));
 
         $this->assertEquals(isset($expected['baz']), isset($collection['baz']));
+
+        $expected_alt = [];
+        $expected_alt[] = 'foo';
+        $collection_alt = new Collection([]);
+        $collection_alt[] = 'foo';
+        $this->assertEquals($expected_alt[0], $collection_alt[0]);
     }
 
     public function test_base_collection_implements_interator_correctly()
