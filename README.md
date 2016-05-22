@@ -1,6 +1,7 @@
 # Collection
 [![Build Status](https://travis-ci.org/enzyme/collection.svg?branch=master)](https://travis-ci.org/enzyme/collection)
 [![Coverage Status](https://coveralls.io/repos/github/enzyme/collection/badge.svg?branch=develop)](https://coveralls.io/github/enzyme/collection?branch=develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/enzyme/collection/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/enzyme/collection/?branch=master)
 
 An all encompassing array manager.
 
@@ -12,18 +13,31 @@ $ composer require enzyme/collection
 
 # Usage
 
-Creating a collection is a simple task, simply instantiate a new collection, passing it an optional array to start life of with, and you're ready to rock!
+You can create a collection from a standard PHP array. Once you have a collection, you can make use of all the methods it exposes.
+
+```php
+use Acme\Mailer;
+use Enzyme\Collection\Collection;
+
+$users = new Collection(['John123', 'Jane456', 'Harry789']);
+
+// Send each user an email.
+$users->each(function ($user) {
+    Mailer::sendWelcomeEmail($user)
+});
+```
+
+The collection implements `ArrayAccess`, `Iterator` and `Countable`, so you can use it as a standard array.
 
 ```php
 use Enzyme\Collection\Collection;
 
-$users = new Collection(['John', 'Jane', 'Harry']);
+$users = new Collection(['John123', 'Jane456', 'Harry789']);
 
-// Send each user an email.
-$users->each(function ($user) {
-    mail($user) // Magical mail method... you're a wizzard.
-});
+var_dump($users[0]); // 'John123'
 ```
+
+In the example above, the equivalent and much more readable method would be `$collection->first()`.
 
 # Available methods
 
@@ -55,4 +69,4 @@ Please see `CONTRIBUTING.md`
 
 # License
 
-MIT - Copyright (c) 2015 Tristan Strathearn, see `LICENSE`
+MIT - Copyright (c) 2016 Tristan Strathearn, see `LICENSE`
