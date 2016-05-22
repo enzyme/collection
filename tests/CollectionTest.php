@@ -76,7 +76,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
         $collection = new Collection($original_array);
         $actual = $collection->map(function ($value, $key) {
-            return $key.'.'.$value;
+            return $key . '.' . $value;
         });
 
         $this->assertEquals($expected, $actual->toArray());
