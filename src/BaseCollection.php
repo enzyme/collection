@@ -2,10 +2,9 @@
 
 namespace Enzyme\Collection;
 
-use Iterator;
-use Countable;
 use ArrayAccess;
-use ArrayIterator;
+use Countable;
+use Iterator;
 
 abstract class BaseCollection implements ArrayAccess, Iterator, Countable
 {
@@ -42,7 +41,7 @@ abstract class BaseCollection implements ArrayAccess, Iterator, Countable
 
     public function offsetExists($offset)
     {
-        return (true === isset($this->items[$offset]));
+        return true === isset($this->items[$offset]);
     }
 
     public function offsetGet($offset)
@@ -94,7 +93,7 @@ abstract class BaseCollection implements ArrayAccess, Iterator, Countable
 
     public function valid()
     {
-        return (true === isset($this->items[$this->position]));
+        return true === isset($this->items[$this->position]);
     }
 
     /*

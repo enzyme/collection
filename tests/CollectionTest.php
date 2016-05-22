@@ -29,7 +29,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $original_array = [
             'foo' => 'bar',
-            'bar' => 'baz'
+            'bar' => 'baz',
         ];
 
         $collection = new Collection($original_array);
@@ -39,7 +39,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function test_collection_gets_default_values_as_expected()
     {
-        $collection = new Collection;
+        $collection = new Collection();
 
         $this->assertEquals('bar', $collection->getOrDefault('foo', 'bar'));
         $this->assertEquals(null, $collection->getOrDefault('foo'));
@@ -76,7 +76,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
         $collection = new Collection($original_array);
         $actual = $collection->map(function ($value, $key) {
-            return $key . '.' . $value;
+            return $key.'.'.$value;
         });
 
         $this->assertEquals($expected, $actual->toArray());
@@ -92,7 +92,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
             [
                 'foo' => 'bar2',
                 'bar' => 'baz2',
-            ]
+            ],
         ];
 
         $expected = [
@@ -162,7 +162,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
      */
     public function test_collection_throws_exception_for_non_existent_element_1()
     {
-        $collection = new Collection;
+        $collection = new Collection();
         $collection->get('foo');
     }
 
@@ -171,7 +171,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
      */
     public function test_collection_throws_exception_for_non_existent_element_2()
     {
-        $collection = new Collection;
+        $collection = new Collection();
         $collection->first();
     }
 
@@ -180,7 +180,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
      */
     public function test_collection_throws_exception_for_non_existent_element_3()
     {
-        $collection = new Collection;
+        $collection = new Collection();
         $collection->last();
     }
 }
