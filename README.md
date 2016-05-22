@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/enzyme/collection.svg?branch=master)](https://travis-ci.org/enzyme/collection)
 [![Coverage Status](https://coveralls.io/repos/github/enzyme/collection/badge.svg?branch=develop)](https://coveralls.io/github/enzyme/collection?branch=develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/enzyme/collection/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/enzyme/collection/?branch=master)
+[![StyleCI](https://styleci.io/repos/59178796/shield)](https://styleci.io/repos/59178796)
 
 An all encompassing array manager.
 
