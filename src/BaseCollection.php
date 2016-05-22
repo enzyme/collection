@@ -3,10 +3,11 @@
 namespace Enzyme\Collection;
 
 use Iterator;
+use Countable;
 use ArrayAccess;
 use ArrayIterator;
 
-abstract class BaseCollection implements ArrayAccess, Iterator
+abstract class BaseCollection implements ArrayAccess, Iterator, Countable
 {
     /**
      * The list of internal items stored by this collection.
@@ -94,5 +95,16 @@ abstract class BaseCollection implements ArrayAccess, Iterator
     public function valid()
     {
         return (true === isset($this->items[$this->position]));
+    }
+
+    /*
+    | --------------------------------------------------------------------------
+    | Implementation of `Countable` interface.
+    | --------------------------------------------------------------------------
+    */
+
+    public function count()
+    {
+        return count($this->items);
     }
 }
