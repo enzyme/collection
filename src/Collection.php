@@ -3,8 +3,6 @@
 namespace Enzyme\Collection;
 
 use Closure;
-use Iterator;
-use ArrayAccess;
 
 class Collection extends BaseCollection
 {
@@ -25,7 +23,7 @@ class Collection extends BaseCollection
      * @param string $key
      * @param mixed  $value
      *
-     * @return boolean
+     * @return bool
      */
     public function has($key, $value = null)
     {
@@ -41,9 +39,9 @@ class Collection extends BaseCollection
      *
      * @param string $key
      *
-     * @return mixed
-     *
      * @throws \Enzyme\Collection\CollectionException If the key does not exist.
+     *
+     * @return mixed
      */
     public function get($key)
     {
@@ -132,7 +130,7 @@ class Collection extends BaseCollection
     /**
      * Whether this collection is empty.
      *
-     * @return boolean
+     * @return bool
      */
     public function isEmpty()
     {
@@ -142,9 +140,9 @@ class Collection extends BaseCollection
     /**
      * Get the value of the first element in this collection.
      *
-     * @return mixed
-     *
      * @throws \Enzyme\Collection\CollectionException If the collection is empty.
+     *
+     * @return mixed
      */
     public function first()
     {
@@ -177,9 +175,9 @@ class Collection extends BaseCollection
     /**
      * Get the value of the last element in this collection.
      *
-     * @return mixed
-     *
      * @throws \Enzyme\Collection\CollectionException If the collection is empty.
+     *
+     * @return mixed
      */
     public function last()
     {
@@ -224,7 +222,7 @@ class Collection extends BaseCollection
     public function only(array $keys)
     {
         return $this->filter(function ($value, $key) use ($keys) {
-            return (true === self::keyExists($key, array_flip($keys)));
+            return true === self::keyExists($key, array_flip($keys));
         });
     }
 
@@ -239,7 +237,7 @@ class Collection extends BaseCollection
     public function except(array $keys)
     {
         return $this->filter(function ($value, $key) use ($keys) {
-            return (false === self::keyExists($key, array_flip($keys)));
+            return false === self::keyExists($key, array_flip($keys));
         });
     }
 
