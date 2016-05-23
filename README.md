@@ -65,6 +65,7 @@ In the example above, the equivalent and much more readable method would be `$co
 | `filter(Closure $fn)` | Return a new collection will all items that pass the given callback functions truth test. |
 | `sort(Closure $fn)` | Return a new collection after the user defined sort function has been executed on the items. Same callback function parameters as the PHP `usort` function. |
 | `hasCount($min, $max = null)` | Checks whether the collection has the minimum count specified, or a count that falls within the range specified. |
+| `keys()` | Returns an array of all the keys used by the collection. |
 
 # Contributing
 

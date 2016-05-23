@@ -37,6 +37,22 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($original_array['bar'], $collection->last());
     }
 
+    public function test_collection_gets_key_values_as_expected()
+    {
+        $original_array = [
+            'foo' => 'bar',
+            'bar' => 'baz',
+        ];
+
+        $expected = [
+            'foo', 'bar',
+        ];
+
+        $collection = new Collection($original_array);
+
+        $this->assertEquals($expected, $collection->keys());
+    }
+
     public function test_collection_gets_default_values_as_expected()
     {
         $collection = new Collection();

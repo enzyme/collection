@@ -361,6 +361,16 @@ class Collection extends BaseCollection
     }
 
     /**
+     * Get a list of the keys used by this collection.
+     *
+     * @return array
+     */
+    public function keys()
+    {
+        return array_keys($this->items);
+    }
+
+    /**
      * Checks whether the specified key exists in the given collection.
      *
      * @param string $key
