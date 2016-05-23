@@ -63,6 +63,8 @@ In the example above, the equivalent and much more readable method would be `$co
 | `pushWithKey($key, $value)` | Return a new collection with the given key/value pair pushed onto a copy of the current collection's items. |
 | `pushArray(array $data)` | Return a new collection with the given array pushed onto a copy of the current collection's items. |
 | `filter(Closure $fn)` | Return a new collection will all items that pass the given callback functions truth test. |
+| `sort(Closure $fn)` | Return a new collection after the user defined sort function has been executed on the items. Same callback function parameters as the PHP `usort` function. |
+| `hasCount($min, $max = null)` | Checks whether the collection has the minimum count specified, or a count that falls within the range specified. |
 
 # Contributing
 
