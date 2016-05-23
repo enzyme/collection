@@ -342,6 +342,25 @@ class Collection extends BaseCollection
     }
 
     /**
+     * Whether this collection has the specified number of elements within the
+     * given range or equal too or above the minimum value specified.
+     *
+     * @param int $min
+     * @param int $max Default is null.
+     *
+     * @return bool
+     */
+    public function hasCount($min, $max = null)
+    {
+        if (null === $max) {
+            return $this->count() >= $min;
+        }
+
+        return $this->count() >= $min
+            && $this->count() <= $max;
+    }
+
+    /**
      * Checks whether the specified key exists in the given collection.
      *
      * @param string $key

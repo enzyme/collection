@@ -62,6 +62,25 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         });
     }
 
+    public function test_collection_method_has_count_works_as_expected()
+    {
+        $original_array = [
+            'foo' => 'bar',
+            'bar' => 'baz',
+            'baz' => 'john',
+        ];
+
+        $collection = new Collection($original_array);
+
+        // Minimum count checks.
+        $this->assertEquals(true, $collection->hasCount(3));
+        $this->assertEquals(false, $collection->hasCount(5));
+
+        // Range count checks.
+        $this->assertEquals(true, $collection->hasCount(1, 3));
+        $this->assertEquals(false, $collection->hasCount(1, 2));
+    }
+
     public function test_collection_method_map_works_as_expected()
     {
         $original_array = [
