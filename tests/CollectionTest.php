@@ -82,6 +82,32 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual->toArray());
     }
 
+    public function test_collection_method_sort_works_as_expected()
+    {
+        $original_array = [
+            ['key' => 0],
+            ['key' => 2],
+            ['key' => 1],
+        ];
+
+        $expected = [
+            ['key' => 0],
+            ['key' => 1],
+            ['key' => 2],
+        ];
+
+        $collection = new Collection($original_array);
+        $collection = $collection->sort(function ($a, $b) {
+            if ($a['key'] === $b['key']) {
+                return 0;
+            }
+
+            return $a['key'] > $b['key'] ? 1 : -1;
+        });
+
+        $this->assertEquals($expected, $collection->toArray());
+    }
+
     public function test_collection_method_pluck_works_as_expected()
     {
         $original_array = [

@@ -320,6 +320,28 @@ class Collection extends BaseCollection
     }
 
     /**
+     * Sort the collection using the provided callback function. Same expected
+     * parameters and the PHP usort function.
+     *
+     * @param Closure $fn
+     * 
+     * @return \Enzyme\Collection\Collection
+     */
+    public function sort(Closure $fn)
+    {
+        $sorted = $this->items;
+        $result = usort($sorted, $fn);
+
+        if (false === $result) {
+            throw new CollectionException(
+                "The collection could be not sorted."
+            );
+        }
+
+        return new static($sorted);
+    }
+
+    /**
      * Checks whether the specified key exists in the given collection.
      *
      * @param string $key
