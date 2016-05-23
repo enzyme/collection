@@ -24,7 +24,7 @@ $users = new Collection(['John123', 'Jane456', 'Harry789']);
 
 // Send each user an email.
 $users->each(function ($user) {
-    Mailer::sendWelcomeEmail($user)
+    Mailer::sendWelcomeEmail($user);
 });
 ```
 
