@@ -324,7 +324,7 @@ class Collection extends BaseCollection
      * parameters and the PHP usort function.
      *
      * @param Closure $fn
-     * 
+     *
      * @return \Enzyme\Collection\Collection
      */
     public function sort(Closure $fn)
@@ -334,7 +334,7 @@ class Collection extends BaseCollection
 
         if (false === $result) {
             throw new CollectionException(
-                "The collection could be not sorted."
+                'The collection could be not sorted.'
             );
         }
 
