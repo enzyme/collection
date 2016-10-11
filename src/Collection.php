@@ -8,7 +8,7 @@ class Collection extends BaseCollection
 {
     /**
      * Static helper method to instantiate a new collection. Useful for when you
-     * want to immediately chain a method. Eg: Collection::make([1, 2, 3])->map(...)
+     * want to immediately chain a method. Eg: Collection::make([1, 2, 3])->map(...).
      *
      * @param array $initial
      *
