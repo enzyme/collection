@@ -7,6 +7,19 @@ use Closure;
 class Collection extends BaseCollection
 {
     /**
+     * Static helper method to instantiate a new collection. Useful for when you
+     * want to immediately chain a method. Eg: Collection::make([1, 2, 3])->map(...)
+     *
+     * @param array $initial
+     *
+     * @return Collection
+     */
+    public static function make(array $initial)
+    {
+        return new static($initial);
+    }
+
+    /**
      * Get a PHP style array from the current collection.
      *
      * @return array
@@ -99,6 +112,35 @@ class Collection extends BaseCollection
         $results = [];
         foreach ($this->items as $key => $value) {
             $results[] = $fn($value, $key);
+        }
+
+        return new static($results);
+    }
+
+    /**
+     * Execute the given callback function for each element in this collection
+     * and save the results to a new collection with the specified key. The
+     * callback function should return a 1 element associative array, eg:
+     * ['key' => 'value'] to be mapped.
+     *
+     * @param Closure $fn
+     *
+     * @return \Enzyme\Collection\Collection
+     */
+    public function mapWithKey(Closure $fn)
+    {
+        $results = [];
+        foreach ($this->items as $key => $value) {
+            $result = $fn($value, $key);
+            $keys = array_keys($result);
+
+            if (count($keys) < 1) {
+                throw new CollectionException(
+                    'Map with key expects a 1 element associative array.'
+                );
+            }
+
+            $results[$keys[0]] = $result[$keys[0]];
         }
 
         return new static($results);

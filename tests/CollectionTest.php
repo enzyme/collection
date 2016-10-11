@@ -25,6 +25,27 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $collection->isEmpty());
     }
 
+    public function test_collection_stores_values_as_expected_using_static_helper()
+    {
+        $expected = [
+            'foo' => 'bar',
+        ];
+
+        $collection = Collection::make($expected);
+
+        $this->assertEquals(true, $collection->has('foo'));
+
+        // Check key/value pair existence.
+        $this->assertEquals(true, $collection->has('foo', 'bar'));
+        $this->assertEquals(false, $collection->has('foo', 'baz'));
+
+        $this->assertEquals($expected['foo'], $collection->get('foo'));
+        $this->assertEquals($expected['foo'], $collection->first());
+        $this->assertEquals($expected, $collection->toArray());
+        $this->assertEquals(count($expected), $collection->count());
+        $this->assertEquals(false, $collection->isEmpty());
+    }
+
     public function test_collection_gets_last_values_as_expected()
     {
         $original_array = [
@@ -112,6 +133,26 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $collection = new Collection($original_array);
         $actual = $collection->map(function ($value, $key) {
             return $key . '.' . $value;
+        });
+
+        $this->assertEquals($expected, $actual->toArray());
+    }
+
+    public function test_collection_method_map_with_key_works_as_expected()
+    {
+        $original_array = [
+            'foo' => 'bar',
+            'baz' => 'john',
+        ];
+
+        $expected = [
+            'foo-o' => 'bar',
+            'baz-o' => 'john',
+        ];
+
+        $collection = new Collection($original_array);
+        $actual = $collection->mapWithKey(function ($value, $key) {
+            return [$key . '-o' => $value];
         });
 
         $this->assertEquals($expected, $actual->toArray());
