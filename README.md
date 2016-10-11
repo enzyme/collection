@@ -44,28 +44,30 @@ In the example above, the equivalent and much more readable method would be `$co
 
 | Method signature | Description |
 | ---: | :--- |
-| `toArray()` | Returns the current collection as a standard PHP array. |
-| `has($key, $value = null)` | Checks whether the collection has the specified key, and/or key/value pair. |
-| `get($key)` | Get the value associated with the specified key. If the key does not exist, a `CollectionException` will be thrown. |
-| `getOrDefault($key, $default = null)` | Same as above, except instead of throwing an exception, return the provided default value. |
-| `each(Closure $fn)` | Execute the callback function provided on each item in the collection. The callback function is passed `$value, $key` as arguments. If the callback returns `false`, the function will return early and will not continue iterating over the remaining items left in the collection.|
-| `map(Closure $fn)` | Execute the callback function provided on each item in the collection. The callback function is passed `$value, $key` as arguments. The return value of the callback function will be saved into a new collection and that collection will be returned as a result |
-| `pluck($pluck_key, $deep = true)` | Grab and return a new collection will all values that have the specified `key`. By default, this will traverse multidimensional arrays. |
 | `count()` | Return the number of elements in the collection. |
-| `isEmpty()` | Whether the collection is empty. |
+| `each(Closure $fn)` | Execute the callback function provided on each item in the collection. The callback function is passed `$value, $key` as arguments. If the callback returns `false`, the function will return early and will not continue iterating over the remaining items left in the collection.|
+| `except(array $keys)` | Return a new collection containing all the keys in the current collection except those whose keys match the ones provided. |
+| `filter(Closure $fn)` | Return a new collection will all items that pass the given callback functions truth test. |
 | `first()` | Get the value of the first item in the collection. If the collection is empty, a `CollectionException` will be thrown. |
 | `firstOrDefault($default = null)` | Same as above, except instead of throwing an exception, return the provided default value. |
+| `get($key)` | Get the value associated with the specified key. If the key does not exist, a `CollectionException` will be thrown. |
+| `getOrDefault($key, $default = null)` | Same as above, except instead of throwing an exception, return the provided default value. |
+| `has($key, $value = null)` | Checks whether the collection has the specified key, and/or key/value pair. |
+| `hasCount($min, $max = null)` | Checks whether the collection has the minimum count specified, or a count that falls within the range specified. |
+| `isEmpty()` | Whether the collection is empty. |
+| `keys()` | Returns an array of all the keys used by the collection. |
 | `last()` | Get the value of the last item in the collection. If the collection is empty, a `CollectionException` will be thrown. |
 | `lastOrDefault($default = null)` | Same as above, except instead of throwing an exception, return the provided default value. |
+| `make(array $initial)` *static* | Static helper method to instantiate a new collection. Useful for when you want to immediately chain a method. Eg: Collection::make([1, 2, 3])->map(...) |
+| `map(Closure $fn)` | Execute the callback function provided on each item in the collection. The callback function is passed `$value, $key` as arguments. The return value of the callback function will be saved into a new collection and that collection will be returned as a result |
+| `mapWithKey(Closure $fn)` | Execute the given callback function for each element in this collection and save the results to a new collection with the specified key. The callback function should return a 1 element associative array, eg: ['key' => 'value'] to be mapped. |
 | `only(array $keys)` | Return a new collection containing only the items in the current collection whose keys match the ones provided. |
-| `except(array $keys)` | Return a new collection containing all the keys in the current collection except those whose keys match the ones provided. |
+| `pluck($pluck_key, $deep = true)` | Grab and return a new collection will all values that have the specified `key`. By default, this will traverse multidimensional arrays. |
 | `push($value)` | Return a new collection with the given value pushed onto a copy of the current collection's items. |
-| `pushWithKey($key, $value)` | Return a new collection with the given key/value pair pushed onto a copy of the current collection's items. |
 | `pushArray(array $data)` | Return a new collection with the given array pushed onto a copy of the current collection's items. |
-| `filter(Closure $fn)` | Return a new collection will all items that pass the given callback functions truth test. |
+| `pushWithKey($key, $value)` | Return a new collection with the given key/value pair pushed onto a copy of the current collection's items. |
 | `sort(Closure $fn)` | Return a new collection after the user defined sort function has been executed on the items. Same callback function parameters as the PHP `usort` function. |
-| `hasCount($min, $max = null)` | Checks whether the collection has the minimum count specified, or a count that falls within the range specified. |
-| `keys()` | Returns an array of all the keys used by the collection. |
+| `toArray()` | Returns the current collection as a standard PHP array. |
 
 # Contributing
 
